@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<base target="_top">
+	<?!= include ('css'); ?>
+</head>
+
+<body>
+
+	<div class="container-fluid">
+		<h2> Solicitudes de remisión pendientes </h2>
+		<div class="row">
+
+			<? data.forEach(row=>{ ?>
+
+			<div class="card m-1 bg-primary text-white" style="width: 18rem;">
+
+				<div class="card-body">
+
+					<h7 class="card-title">
+						<!-- EPS -->
+
+						<?!= row[10] ?>
+					</h7>
+					<h6 class="card-subtitle mb-2">
+						<!-- NOMBRE -->
+						<?!= row[9] ?>
+					</h6>
+					<p class="card-text" style="margin-top:-10px;">
+						<!-- IDENTIFICACION -->
+						<?!= row[7] ?>
+					</p>
+					<p class="card-text" style="margin-top:-10px;">
+						<?!= row[13] + ' (' + row[14] + 'A)' ?>
+					</p> <!-- DESTINO (ESPECIALIDAD)-->
+
+					<a class="stretched-link" data-bs-toggle="modal" data-bs-target="#exampleModal"></a>
+
+					<? if (row[12] == "REPETIDA"){ ?>
+
+					<p class="card-text"
+						style="margin-top:-10px; color: yellow; position: absolute; top: 10px; left: 220px; font-size: 12px;">
+						<i> <?!= row[12] ?> </i></p> <!-- REPETIDA? -->
+
+					<? } ?>
+
+				</div>
+			</div>
+
+			<? }); ?>
+
+		</div>
+
+
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Nombre</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					Detalles de la solicitudA
+				</div>
+			</div>
+
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-bs-dismiss="modal">SoportesX</button>
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+		</div>
+	</div>
+	</div>
+	</div>
+
+	<?!= include('js'); ?>
+</body>
+
+</html>
